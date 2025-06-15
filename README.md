@@ -21,7 +21,7 @@ This repository contains scripts to set up VFIO (Virtual Function I/O) passthrou
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/jc578271/vfio_fedora.git
 cd vfio_fedora
 ```
 
@@ -43,18 +43,21 @@ The main menu provides the following options:
    - Installs required packages
    - Configures GRUB for IOMMU
    - Sets up dracut configuration
-   - Installs System76 packages (if applicable)
+   - Installs System76 packages
+
+2. **Post install VFIO and dependencies**
+   - Enable System76 packages (if applicable)
    - Configures libvirt hooks
 
-2. **Test start.sh**
+3. **Test start.sh**
    - Tests the VM start script
    - Useful for debugging passthrough setup
 
-3. **Test revert.sh**
+4. **Test revert.sh**
    - Tests the VM stop script
    - Useful for debugging cleanup process
 
-4. **Add VM scripts**
+5. **Add VM scripts**
    - Prompts for VM name
    - Sets up VM-specific hooks
    - Copies start.sh and revert.sh to appropriate locations
@@ -87,6 +90,57 @@ The main menu provides the following options:
 - Make sure to backup your data before making system changes
 - Some systems may require additional configuration
 - The scripts assume a dual-GPU setup
+
+## Creating a Virtual Machine Using GUI (virt-manager)
+
+### Starting virt-manager
+```bash
+sudo virt-manager
+```
+
+### Creating a New VM
+1. Click "Create a new virtual machine" button
+2. Choose your installation method (local install media, network install, etc.)
+3. Select your Windows ISO file
+4. Configure memory and CPU settings
+5. Create storage for the VM (recommended: 50GB or more)
+
+### Configuring Graphics
+1. After VM creation, click "Add Hardware"
+2. Select "Graphics"
+3. Choose "VNC server"
+4. Set "Address" to "All interfaces"
+5. Click "Finish"
+
+### Adding VirtIO Drivers
+1. Click "Add Hardware"
+2. Select "Storage"
+3. Choose "CDROM device"
+4. Click "Manage..."
+5. Browse and select "virtio-win-0.1.271.iso"
+6. Click "Finish"
+
+### Configuring Storage
+1. Click "Add Hardware"
+2. Select "Storage"
+3. Set size (e.g., 0.1 GiB)
+4. Set "Bus type" to "VirtIO"
+5. Click "Finish"
+
+### Starting the VM
+1. Click the "Start" button (play icon)
+2. When Windows installation begins:
+   - Click "Explore" in the Windows installer
+   - Navigate to the CD Drive
+   - Select "virtio-win-gt-x64" for 64-bit Windows
+   - Install the required VirtIO drivers
+
+To connect to the VM: Use any VNC viewer and connect to `<your local ip>:5901`
+
+### Notes
+- Make sure to install VirtIO drivers during Windows installation
+- The VNC server will be accessible from any machine on your network
+- You may need to adjust memory and CPU settings based on your host system's capabilities
 
 ## Contributing
 
