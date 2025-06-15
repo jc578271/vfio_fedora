@@ -27,7 +27,7 @@ cd vfio_fedora
 
 2. Make scripts executable:
 ```bash
-chmod +x main.sh install.sh add.sh
+chmod +x main.sh
 ```
 
 3. Run the main menu:
