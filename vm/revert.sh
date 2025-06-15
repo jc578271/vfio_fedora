@@ -1,6 +1,9 @@
 #!/bin/bash
 set -x
 
+sudo system76-power graphics hybrid
+sudo system76-power graphics power on
+
 # Re-Bind GPU to Nvidia Driver
 sudo virsh nodedev-reattach pci_0000_01_00_1
 sudo virsh nodedev-reattach pci_0000_01_00_0
