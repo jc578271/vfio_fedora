@@ -16,7 +16,7 @@ sudo modprobe nvidia_drm
 sudo modprobe nouveau
 
 # Rebind VT consoles
-echo 1 > sudo /sys/class/vtconsole/vtcon0/bind
+echo 1 | sudo tee /sys/class/vtconsole/vtcon0/bind > /dev/null
 
 sudo nvidia-xconfig --query-gpu-info > /dev/null 2>&1
 
