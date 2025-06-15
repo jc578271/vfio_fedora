@@ -6,9 +6,10 @@ show_menu() {
     echo "=== VFIO Setup Menu ==="
     echo "0: Exit"
     echo "1: Install VFIO and dependencies"
-    echo "2: Test start.sh"
-    echo "3: Test revert.sh"
-    echo "4: Add VM scripts"
+    echo "2: Post install dependencies (run after [1])"
+    echo "3: Test start.sh"
+    echo "4: Test revert.sh"
+    echo "5: Add VM scripts"
     echo "======================"
     echo -n "Enter your choice: "
 }
@@ -61,12 +62,16 @@ while true; do
             bash ./install.sh
             ;;
         2)
-            test_start
+            echo "Running post installation..."
+            bash ./postinstall.sh
             ;;
         3)
-            test_revert
+            test_start
             ;;
         4)
+            test_revert
+            ;;
+        5)
             add_vm_scripts
             ;;
         *)
