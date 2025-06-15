@@ -106,8 +106,8 @@ sudo virt-manager
 
 ### Starting the VM
 1. Click the "Start" button (play icon)
-2. When Windows installation begins:
-   - Click "Explore" in the Windows installer
+2. After Windows installation done:
+   - Open this pc
    - Navigate to the CD Drive
    - Select "virtio-win-gt-x64" for 64-bit Windows
    - Install the required VirtIO drivers
