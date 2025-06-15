@@ -23,6 +23,7 @@ echo 'add_drivers+=" vfio vfio_iommu_type1 vfio_pci "' | sudo tee /etc/dracut.co
 sudo dracut -f --kver `uname -r`
 
 # Install System76 packages
+sudo dnf copr enable szydell/system76
 sudo dnf install system76-dkms system76-power system76-driver system76-firmware firmware-manager system76-io-dkms system76-acpi-dkms
 sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake system76-firmware-daemon --now
 sudo systemctl enable --user com.system76.FirmwareManager.Notify.timer
