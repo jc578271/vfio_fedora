@@ -56,7 +56,7 @@ The main menu provides the following options:
    - Tests the VM stop script
    - Useful for debugging cleanup process
 
-5. **Add VM scripts**
+5. **Add scripts into VM**
    - Prompts for VM name
    - Sets up VM-specific hooks
    - Copies start.sh and revert.sh to appropriate locations
