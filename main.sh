@@ -43,7 +43,7 @@ add_vm_scripts() {
         echo "Error: VM name cannot be empty"
         return 1
     fi
-    ./add.sh "$vm_name"
+    bash ./add.sh "$vm_name"
 }
 
 # Main loop
@@ -58,7 +58,7 @@ while true; do
             ;;
         1)
             echo "Running installation..."
-            ./install.sh
+            bash ./install.sh
             ;;
         2)
             test_start
