@@ -61,28 +61,6 @@ The main menu provides the following options:
    - Sets up VM-specific hooks
    - Copies start.sh and revert.sh to appropriate locations
 
-## What the Installation Does
-
-1. Installs required packages:
-   - RPM Fusion repositories
-   - NVIDIA drivers
-   - Virtualization packages
-   - System76 packages (if applicable)
-
-2. Configures system:
-   - Enables IOMMU in GRUB
-   - Adds VFIO drivers to initramfs
-   - Sets up libvirt hooks
-   - Enables SSH service
-   - Adds user to libvirt group
-
-## After Installation
-
-1. Reboot your system to apply changes
-2. Create your VM in virt-manager
-3. Use the "Add VM scripts" option to set up passthrough for your VM
-4. Configure your VM to use the passed-through GPU
-
 ## Notes
 
 - This setup is specifically for Fedora Linux
