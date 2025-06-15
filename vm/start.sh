@@ -17,7 +17,7 @@ sudo rmmod nvidia_uvm
 sudo rmmod nvidia
 
 # Unbind VTconsoles
-echo 0 > sudo /sys/class/vtconsole/vtcon0/bind
+echo 0 | sudo tee /sys/class/vtconsole/vtcon0/bind > /dev/null
 
 # Avoid a Race condition by waiting 2 seconds. This can be calibrated to be shorter or longer if required for your system
 sudo sleep 2
