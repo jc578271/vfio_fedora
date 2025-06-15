@@ -3,29 +3,29 @@
 set -x
 
 # Stop display manager
-systemctl stop display-manager.service
+sudo systemctl stop display-manager.service
 
 # Start hybrid graphics
-system76-power graphics hybrid
-system76-power graphics power on
+sudo system76-power graphics hybrid
+sudo system76-power graphics power on
 
 ## Uncomment the following line if you use GDM
-killall gdm-x-session
-rmmod nouveau
-rmmod nvidia_drm
-rmmod nvidia_modeset
-rmmod nvidia_uvm     
-rmmod nvidia
+#sudo killall gdm-x-session
+sudo rmmod nouveau
+sudo rmmod nvidia_drm
+sudo rmmod nvidia_modeset
+sudo rmmod nvidia_uvm     
+sudo rmmod nvidia
 
 # Unbind VTconsoles
-echo 0 > /sys/class/vtconsole/vtcon0/bind
+echo 0 > sudo /sys/class/vtconsole/vtcon0/bind
 
 # Avoid a Race condition by waiting 2 seconds. This can be calibrated to be shorter or longer if required for your system
-sleep 2
+sudo sleep 2
 
 # Unbind the GPU from display driver
-virsh nodedev-detach pci_0000_01_00_0
-virsh nodedev-detach pci_0000_01_00_1
+sudo virsh nodedev-detach pci_0000_01_00_0
+sudo virsh nodedev-detach pci_0000_01_00_1
 
 # Load VFIO Kernel Module  
-modprobe vfio-pci
+sudo modprobe vfio-pci
