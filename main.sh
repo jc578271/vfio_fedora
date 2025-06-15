@@ -9,7 +9,7 @@ show_menu() {
     echo "2: Post install dependencies (run after [1])"
     echo "3: Test start.sh"
     echo "4: Test revert.sh"
-    echo "5: Add VM scripts"
+    echo "5: Add scripts into VM"
     echo "======================"
     echo -n "Enter your choice: "
 }
