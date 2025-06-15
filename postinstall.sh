@@ -1,5 +1,5 @@
 #!/bin/bash
-set +e
+set -x
 
 # Enable System76
 sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake system76-firmware-daemon --now
