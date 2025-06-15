@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Check if VM name is provided
 if [ -z "$1" ]; then
     echo "Error: VM name is required"
