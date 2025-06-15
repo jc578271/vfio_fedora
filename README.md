@@ -7,7 +7,6 @@ This repository contains scripts to set up VFIO (Virtual Function I/O) passthrou
 - Fedora Linux
 - A CPU that supports virtualization (Intel VT-x/AMD-V)
 - A motherboard that supports IOMMU
-- At least two GPUs (one for host, one for passthrough)
 
 ## Scripts Overview
 
