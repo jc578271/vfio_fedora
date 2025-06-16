@@ -26,5 +26,7 @@ sudo dracut -f --kver `uname -r`
 # Install System76 packages
 sudo dnf copr enable szydell/system76
 sudo dnf install system76-dkms system76-power system76-driver system76-firmware firmware-manager system76-io-dkms system76-acpi-dkms
+sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake system76-firmware-daemon
+sudo systemctl enable --user com.system76.FirmwareManager.Notify.timer
 
 echo "Reboot to apply changes"
