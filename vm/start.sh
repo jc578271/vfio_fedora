@@ -10,7 +10,7 @@ sudo system76-power graphics integrated
 
 ## Uncomment the following line if you use GDM
 #sudo killall gdm-x-session
-sudo rmmod nouveau
+#sudo rmmod nouveau
 sudo rmmod nvidia_drm
 sudo rmmod nvidia_modeset
 sudo rmmod nvidia_uvm     
