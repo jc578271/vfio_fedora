@@ -13,7 +13,7 @@ sudo modprobe nvidia
 sudo modprobe nvidia_uvm
 sudo modprobe nvidia_modeset
 sudo modprobe nvidia_drm
-sudo modprobe nouveau
+#sudo modprobe nouveau
 
 # Rebind VT consoles
 echo 1 | sudo tee /sys/class/vtconsole/vtcon0/bind > /dev/null
