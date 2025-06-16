@@ -2,8 +2,8 @@
 set -x
 
 # Enable System76
-sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake system76-firmware-daemon --now
-sudo systemctl enable --user com.system76.FirmwareManager.Notify.timer
+sudo systemctl start com.system76.PowerDaemon.service system76-power-wake system76-firmware-daemon
+sudo systemctl start --user com.system76.FirmwareManager.Notify.timer
 
 # Attached, deattached nvidia scripts
 sudo mkdir -p /etc/libvirt/hooks
