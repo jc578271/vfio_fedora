@@ -111,6 +111,17 @@ sudo virt-manager
    - Navigate to the CD Drive
    - Select "virtio-win-gt-x64" for 64-bit Windows
    - Install the required VirtIO drivers
+   - Shutdown VM
+   - Enable XML in virt manager
+   - In SATA Disk edit like below:
+```xml
+<disk type="file" device="disk">
+  <driver name="qemu" type="qcow2" discard="unmap"/>
+  <source file="/var/lib/libvirt/images/win11.qcow2"/>
+  <target dev="sda" bus="virtio"/>
+  <address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0"/>
+</disk>
+```
 
 To connect to the VM: Use any VNC viewer and connect to `<your local ip>:5901`
 
