@@ -1,7 +1,6 @@
 #!/bin/bash
 set -x
 
-sudo system76-power graphics hybrid
 sudo system76-power graphics power on
 
 # Re-Bind GPU to Nvidia Driver
