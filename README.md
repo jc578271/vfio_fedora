@@ -56,7 +56,7 @@ The main menu provides the following options:
    - Tests the VM stop script
    - Useful for debugging cleanup process
 
-5. **Add scripts into VM**
+5. **Add hooks into VM**
    - Prompts for VM name
    - Sets up VM-specific hooks
    - Copies start.sh and revert.sh to appropriate locations
@@ -104,7 +104,7 @@ sudo virt-manager
 4. Set "Bus type" to "VirtIO"
 5. Click "Finish"
 
-### Starting the VM
+### Install Disk driver the VM
 1. Click the "Start" button (play icon)
 2. After Windows installation done:
    - Open this pc
@@ -122,6 +122,19 @@ sudo virt-manager
   <address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0"/>
 </disk>
 ```
+
+### Test connect with VNC Viewer
+1. Start VM
+2. Find ip of host device
+3. Connect to VM via VNC Viewer
+
+### Add Nvidia drivers
+1. Add Hardware
+2. PCI Host Device
+3. Select NVIDIA Devices
+4. Start script -> press 5 (add hooks into VM)
+5. Start VM
+6. Connect VM with VNC Viewer -> install NVIDIA drivers from internet
 
 To connect to the VM: Use any VNC viewer and connect to `<your local ip>:5901`
 
