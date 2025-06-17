@@ -95,6 +95,14 @@ ip addr
 ### Add audio driver
 `USB Host Device` -> `C-Media Audio`
 
+### Share Storage
+1. `Add Hardware` -> `FileSystem`:
+   - `Driver`: `virtiofs`
+   - `Source path`: `/run/media/hoang/External`
+   - `Target path`: `host_fedora`
+2. In VM:
+   - install `winfsp` -> `services` -> `VirtIOFS` -> `start` (set automatic for next boot)
+
 ### Add Nvidia drivers
 1. `Add Hardware` => `PCI Host Device`
 3. Select NVIDIA Devices
