@@ -16,9 +16,22 @@ sudo rmmod nvidia_modeset
 sudo rmmod nvidia_uvm     
 sudo rmmod nvidia
 
-# Kill processes using /dev/nvidia* before unloading NVIDIA modules
-sudo fuser -v /dev/nvidia* 2>/dev/null | awk 'NR>1 {for(i=3;i<=NF;i++) print $i}' | xargs -r sudo kill -9
-# sudo fuser -v /dev/nvidia* 2>/dev/null | awk '/^[ \t]*[a-zA-Z0-9_\-]+[ \t]+[0-9]+/ {print $2}' | sort -u | xargs -r sudo kill -9
+# Kill processes using /dev/nvidia* before unloading NVIDIA modules again
+sudo fuser -v /dev/nvidia* 2>/dev/null | awk '
+  /:$/ {next}                # skip device lines
+  /USER/ {next}              # skip header
+  {
+    for (i=1; i<=NF; i++) {
+      if ($i ~ /^[0-9]+$/) { print $i }
+    }
+  }
+' | sort -u | xargs -r sudo kill -9
+
+# Unload NVIDIA modules again
+sudo rmmod nvidia_drm
+sudo rmmod nvidia_modeset
+sudo rmmod nvidia_uvm     
+sudo rmmod nvidia
 
 # Unbind VTconsoles
 echo 0 | sudo tee /sys/class/vtconsole/vtcon0/bind > /dev/null
