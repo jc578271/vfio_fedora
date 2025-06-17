@@ -34,40 +34,6 @@ chmod +x main.sh
 ./main.sh
 ```
 
-## Usage
-
-The main menu provides the following options:
-
-1. **Install VFIO and dependencies**
-   - Installs required packages
-   - Configures GRUB for IOMMU
-   - Sets up dracut configuration
-   - Installs System76 packages
-
-2. **Post install VFIO and dependencies**
-   - Enable System76 packages (if applicable)
-   - Configures libvirt hooks
-
-3. **Test start.sh**
-   - Tests the VM start script
-   - Useful for debugging passthrough setup
-
-4. **Test revert.sh**
-   - Tests the VM stop script
-   - Useful for debugging cleanup process
-
-5. **Add hooks into VM**
-   - Prompts for VM name
-   - Sets up VM-specific hooks
-   - Copies start.sh and revert.sh to appropriate locations
-
-## Notes
-
-- This setup is specifically for Fedora Linux
-- Make sure to backup your data before making system changes
-- Some systems may require additional configuration
-- The scripts assume a dual-GPU setup
-
 ## Creating a Virtual Machine Using GUI (virt-manager)
 
 ### Starting virt-manager
@@ -76,44 +42,27 @@ sudo virt-manager
 ```
 
 ### Creating a New VM
-1. Click "Create a new virtual machine" button
-2. Choose your installation method (local install media, network install, etc.)
-3. Select your Windows ISO file
-4. Configure memory and CPU settings
-5. Create storage for the VM (recommended: 50GB or more)
+1. `Graphics`:
+   - `Type`: `VNC server`
+   - `Address`: `All interfaces`
 
-### Configuring Graphics
-1. After VM creation, click "Add Hardware"
-2. Select "Graphics"
-3. Choose "VNC server"
-4. Set "Address" to "All interfaces"
-5. Click "Finish"
+2. `Storage`:
+   - `Device type`: `CDROM device`
+   - `Manage`: `virtio-win-0.1.271.iso`
 
-### Adding VirtIO Drivers
-1. Click "Add Hardware"
-2. Select "Storage"
-3. Choose "CDROM device"
-4. Click "Manage..."
-5. Browse and select "virtio-win-0.1.271.iso"
-6. Click "Finish"
-
-### Configuring Storage
-1. Click "Add Hardware"
-2. Select "Storage"
-3. Set size (e.g., 0.1 GiB)
-4. Set "Bus type" to "VirtIO"
-5. Click "Finish"
+3. `Storage`:
+   - `Size`: `0.1GiB`
+   - `Bus type`: `Virtio`
 
 ### Install Disk driver the VM
 1. Click the "Start" button (play icon)
-2. After Windows installation done:
-   - Open this pc
+2. After `Windows` installation done:
+   - Open `This PC`
    - Navigate to the CD Drive
-   - Select "virtio-win-gt-x64" for 64-bit Windows
-   - Install the required VirtIO drivers
+   - Install `virtio-win-gt-x64` for 64-bit Windows
 3. Shutdown VM
 4. Enable XML in virt manager
-5. In SATA Disk edit like below:
+5. In `SATA Disk` edit like below:
 ```xml
 <disk type="file" device="disk">
   <driver name="qemu" type="qcow2" discard="unmap"/>
@@ -126,11 +75,25 @@ sudo virt-manager
 ### Test connect with VNC Viewer
 1. Start VM
 2. Find ip of host device
+```bash
+ip addr
+```
 3. Connect to VM via VNC Viewer
 
+### Add keyboard, mouse
+```xml
+<input type="evdev">
+    <source dev="/dev/input/by-path/pci-0000:00:15.0-platform-i2c_designware.0-event-mouse"/>
+</input>
+```
+```xml
+<input type="evdev">
+    <source dev="/dev/input/by-path/platform-i8042-serio-0-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
+</input>
+```
+
 ### Add Nvidia drivers
-1. Add Hardware
-2. PCI Host Device
+1. `Add Hardware` => `PCI Host Device`
 3. Select NVIDIA Devices
 4. Start script -> press 5 (add hooks into VM)
 5. Start VM
