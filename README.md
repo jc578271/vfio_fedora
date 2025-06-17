@@ -111,9 +111,9 @@ sudo virt-manager
    - Navigate to the CD Drive
    - Select "virtio-win-gt-x64" for 64-bit Windows
    - Install the required VirtIO drivers
-   - Shutdown VM
-   - Enable XML in virt manager
-   - In SATA Disk edit like below:
+3. Shutdown VM
+4. Enable XML in virt manager
+5. In SATA Disk edit like below:
 ```xml
 <disk type="file" device="disk">
   <driver name="qemu" type="qcow2" discard="unmap"/>
