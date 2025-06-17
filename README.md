@@ -92,6 +92,9 @@ ip addr
 </input>
 ```
 
+### Add audio driver
+`USB Host Device` -> `C-Media Audio`
+
 ### Add Nvidia drivers
 1. `Add Hardware` => `PCI Host Device`
 3. Select NVIDIA Devices
