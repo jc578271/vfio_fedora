@@ -101,7 +101,7 @@ ip addr
    - `Source path`: `/run/media/hoang/External`
    - `Target path`: `host_fedora`
 2. In VM:
-   - install `winfsp` -> `services` -> `VirtIOFS` -> `start` (set automatic for next boot)
+   - install `winfsp` -> `Services` -> `VirtIO-FS Service` -> `start` (set automatic for next boot)
 
 ### Add Nvidia drivers
 1. `Add Hardware` => `PCI Host Device`
