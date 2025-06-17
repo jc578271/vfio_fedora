@@ -5,9 +5,6 @@ set -x
 # Stop display manager
 sudo systemctl stop display-manager.service
 
-# Start hybrid graphics
-sudo system76-power graphics integrated
-
 ## Uncomment the following line if you use GDM
 #sudo killall gdm-x-session
 #sudo rmmod nouveau
