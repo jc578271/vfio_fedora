@@ -11,7 +11,8 @@ sudo wget 'https://raw.githubusercontent.com/PassthroughPOST/VFIO-Tools/master/l
      -O /etc/libvirt/hooks/qemu
 sudo chmod +x /etc/libvirt/hooks/qemu
 
-sudo systemctl restart libvirtd
+# Start Libvirt
+sudo systemctl start libvirtd
 
 # Enable SSH
 sudo systemctl enable sshd
