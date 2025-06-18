@@ -11,6 +11,9 @@ modinfo -F version nvidia
 # Install virtualization group
 sudo dnf group install --with-optional virtualization
 
+# Enable libvirt
+sudo systemctl enable libvirtd
+
 # Update GRUB configuration
 sudo sed -i 's/GRUB_CMDLINE_LINUX="[^"]*"/GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt"/' /etc/sysconfig/grub
 
