@@ -10,6 +10,7 @@ show_menu() {
     echo "3: Test start.sh"
     echo "4: Test revert.sh"
     echo "5: Add scripts into VM"
+    echo "6: Remove scripts from VM"
     echo "======================"
     echo -n "Enter your choice: "
 }
@@ -73,6 +74,10 @@ while true; do
             ;;
         5)
             add_vm_scripts
+            ;;
+        6)
+            echo "Running remove script..."
+            bash ./remove.sh
             ;;
         *)
             echo "Invalid option. Please try again."
