@@ -98,7 +98,7 @@ ip addr
 ### Share Storage
 1. `Add Hardware` -> `FileSystem`:
    - `Driver`: `virtiofs`
-   - `Source path`: `/run/media/hoang/External`
+   - `Source path`: `/mnt/external`
    - `Target path`: `host_fedora`
 2. In VM:
    - install `winfsp` -> `Services` -> `VirtIO-FS Service` -> `start` (set automatic for next boot)
