@@ -96,6 +96,7 @@ ip addr
 `USB Host Device` -> `C-Media Audio`
 
 ### Add bluetooth
+`USB Host Device` -> `Intel Corp. AX201 Bluetooth`
 ```xml
 <domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">  
   <devices>    
