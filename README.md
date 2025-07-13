@@ -95,6 +95,18 @@ ip addr
 ### Add audio driver
 `USB Host Device` -> `C-Media Audio`
 
+### Add bluetooth
+```xml
+<domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">  
+  <devices>    
+	...
+  </devices>    
+  <qemu:capabilities>    
+		<qemu:del capability="usb-host.hostdevice"/>    
+  </qemu:capabilities>    
+</domain>
+```
+
 ### Share Storage
 1. `Add Hardware` -> `FileSystem`:
    - `Driver`: `virtiofs`
