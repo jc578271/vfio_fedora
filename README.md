@@ -99,10 +99,10 @@ ip addr
 ```xml
 <domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">  
   <devices>    
-	...
+    ...
   </devices>    
-  <qemu:capabilities>    
-		<qemu:del capability="usb-host.hostdevice"/>    
+  <qemu:capabilities>
+    <qemu:del capability="usb-host.hostdevice"/>    
   </qemu:capabilities>    
 </domain>
 ```
